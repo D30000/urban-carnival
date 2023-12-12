@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зоопарк</title>
+    
+    <style>
+        body {
+            background-color: #ADD8E6;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            text-shadow: -1px -1px 1px black, 1px -1px 1px black, -1px 1px 1px black, 1px 1px 1px black;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        form {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        select {
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            width: 200px;
+            background-color: white; 
+            color: black; 
+            cursor: pointer;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            width: 400px;
+            background-color: #4BAAC8; 
+            color: white;
+            text-shadow: -1px -1px 1px black, 1px -1px 1px black, -1px 1px 1px black, 1px 1px 1px black;
+            cursor: pointer;
+        }
+
+        #personalByIdForm {
+            display: none;
+            margin-top: 40px;
+        }
+
+        #personalByIdForm form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #personalByIdForm label {
+            color: white;
+            text-shadow: -1px -1px 1px black, 1px -1px 1px black, -1px 1px 1px black, 1px 1px 1px black;
+            padding: 18px;
+            font-size: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        #personalByIdForm input {
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        #personalByIdForm button[type="submit"] {
+            background-color: #4BAAC8;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Вибір таблиці</h1>
+    <form action="/table" method="post">
+        <select name="table">
+            {% for table in table_names %}
+                <option value="{{ table }}">{{ table }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Показати дані з таблиці</button>
+
+        <button type="button" onclick="showPersonalByIdForm()">Вибірка персоналу за його ID</button>
+    </form>
+
+    <div id="personalByIdForm">
+        <form action="/personal" method="post">
+            <label for="personalId">ID персоналу:</label>
+            <input type="text" name="personalId" id="personalId" required>
+            <button type="submit">Пошук</button>
+        </form>
+    </div>
+
+    <script>
+        function showPersonalByIdForm() {
+            document.getElementById('personalByIdForm').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

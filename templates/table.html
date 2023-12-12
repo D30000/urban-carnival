@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зоопарк - таблиця</title>
+
+    <style>
+        body {
+            background-color: #ADD8E6; 
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            text-shadow: -1px -1px 1px black, 1px -1px 1px black, -1px 1px 1px black, 1px 1px 1px black;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        table {
+            width: 60%; 
+            margin: 20px auto;
+            border-collapse: collapse;
+            border: 2px solid black; 
+            text-shadow: -0.7px -0.7px 0.7px black, 0.7px -0.7px 0.7px black, -0.7px 0.7px 0.7px black, 0.7px 0.7px 0.7px black;
+            color: white; 
+        }
+
+        th, td {
+            padding: 15px;
+            border: 2px solid black;
+        }
+
+        th {
+            background-color: #4BAAC8;
+            text-shadow: -1px -1px 1px black, 1px -1px 1px black, -1px 1px 1px black, 1px 1px 1px black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ table_name }}</h1>
+    <table>
+        <tr>
+            {% for column in columns %}
+                <th>{{ column }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in data %}
+            <tr>
+                {% for value in row %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
